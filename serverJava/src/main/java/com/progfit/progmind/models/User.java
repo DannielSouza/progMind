@@ -1,4 +1,4 @@
-package com.progfit.progfit.models;
+package com.progfit.progmind.models;
 
 import java.io.Serializable;
 import java.util.Objects;

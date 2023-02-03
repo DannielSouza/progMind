@@ -1,4 +1,4 @@
-package com.progfit.progfit.services;
+package com.progfit.progmind.services;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.progfit.progmind.models.User;
+import com.progfit.progmind.repositories.UserRepository;
 
-import com.progfit.progfit.models.User;
-import com.progfit.progfit.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class UserService {

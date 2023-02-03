@@ -1,4 +1,4 @@
-package com.progfit.progfit.controller;
+package com.progfit.progmind.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.progfit.progfit.models.User;
-import com.progfit.progfit.services.UserService;
+import com.progfit.progmind.models.User;
+import com.progfit.progmind.services.UserService;
 
 import jakarta.validation.Valid;
 
