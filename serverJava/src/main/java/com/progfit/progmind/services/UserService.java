@@ -36,14 +36,14 @@ public class UserService {
 
     List<User> usersExisting = checkExistingUser(user.getEmail());
     if(usersExisting.size() >= 1){
-      message.put("error", "This user alreary exist");
+      message.put("error", "O usuário já existe.");
       return ResponseEntity.badRequest().body(message);
     }
 
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     User newUser = new User(null, user.getName(), user.getEmail(), encoder.encode(user.getPassword()));
     repository.save(newUser);
-    message.put("message", "User create sucefully.");
+    message.put("message", "Usuário criado com sucesso.");
 
     return ResponseEntity.ok().body(message);
   }
