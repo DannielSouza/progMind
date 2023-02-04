@@ -1,4 +1,4 @@
-package com.progfit.progmind.controller;
+package com.progmind.progmind.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

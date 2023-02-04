@@ -1,4 +1,4 @@
-package com.progfit.progmind.JWTconfig;
+package com.progmind.progmind.JWTconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.progfit.progmind.repositories.UserRepository;
+import com.progmind.progmind.repositories.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

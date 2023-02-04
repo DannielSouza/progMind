@@ -1,6 +1,6 @@
-package com.progfit.progmind.services;
+package com.progmind.progmind.services;
 
-import com.progfit.progmind.models.User;
+import com.progmind.progmind.models.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.progfit.progmind.JWTconfig.JwtService;
-import com.progfit.progmind.controller.AuthenticationRequest;
-import com.progfit.progmind.repositories.UserRepository;
+import com.progmind.progmind.JWTconfig.JwtService;
+import com.progmind.progmind.controller.AuthenticationRequest;
+import com.progmind.progmind.repositories.UserRepository;
 
 
 @Service

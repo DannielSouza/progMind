@@ -1,4 +1,4 @@
-package com.progfit.progmind.controller;
+package com.progmind.progmind.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.progfit.progmind.models.User;
-import com.progfit.progmind.services.AuthenticationService;
-import com.progfit.progmind.services.UserService;
+import com.progmind.progmind.models.User;
+import com.progmind.progmind.services.AuthenticationService;
+import com.progmind.progmind.services.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
