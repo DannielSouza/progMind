@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.progfit.progmind.models.User;
 import com.progfit.progmind.services.AuthenticationService;
@@ -58,5 +59,5 @@ public class UserController {
   public ResponseEntity<Map<String, String>> login(@RequestBody @Valid AuthenticationRequest request){
     return authService.authenticate(request);
   }
-
+  
 }
