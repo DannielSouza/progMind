@@ -1,8 +1,8 @@
 package com.progfit.progmind.services;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,8 @@ public class UserService {
   
 
   /* CHECK IF THE USER ALREARY EXIST */
-  public List<User> checkExistingUser(String email){
-    List<User> usersExisting = repository.findByEmail(email);
+  public Optional<User> checkExistingUser(String email){
+    Optional<User> usersExisting = repository.findByEmail(email);
     return usersExisting;
   }
   
@@ -34,18 +34,16 @@ public class UserService {
 
     Map<String, String> message = new HashMap<>();
 
-    List<User> usersExisting = checkExistingUser(user.getEmail());
-    if(usersExisting.size() >= 1){
+    Optional<User> usersExisting = checkExistingUser(user.getEmail());
+    if(!usersExisting.isEmpty()){
       message.put("error", "O usuário já existe.");
       return ResponseEntity.badRequest().body(message);
     }
-
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    User newUser = new User(null, user.getName(), user.getEmail(), encoder.encode(user.getPassword()));
-    repository.save(newUser);
-    message.put("message", "Usuário criado com sucesso.");
-
-    return ResponseEntity.ok().body(message);
+      BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+      User newUser = new User(null, user.getName(), user.getEmail(), encoder.encode(user.getPassword()));
+      repository.save(newUser);
+      message.put("message", "Usuário criado com sucesso.");
+      return ResponseEntity.ok().body(message);
   }
   
 
