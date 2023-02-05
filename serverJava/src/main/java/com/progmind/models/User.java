@@ -1,4 +1,4 @@
-package com.progmind.progmind.models;
+package com.progmind.models;
 
 import java.util.ArrayList;
 import java.util.Collection;

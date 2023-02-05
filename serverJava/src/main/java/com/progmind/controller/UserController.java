@@ -1,4 +1,4 @@
-package com.progmind.progmind.controller;
+package com.progmind.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import com.progmind.progmind.models.User;
-import com.progmind.progmind.services.AuthenticationService;
-import com.progmind.progmind.services.UserService;
+import com.progmind.models.User;
+import com.progmind.services.AuthenticationService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
   
-  private final UserService userService;
   private final AuthenticationService authService;
-
 
 
   @PostMapping("/register")
@@ -37,27 +33,35 @@ public class UserController {
   }
 
 
-  /* CHECKING USER'S CREATION ERROR */
-  @ResponseStatus(code = HttpStatus.FORBIDDEN)
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
-
-    Map<String, String> errors = new HashMap<>();
-
-    ex.getBindingResult().getAllErrors().forEach(error ->{
-      String errorMessage = error.getDefaultMessage();
-      errors.put("error", errorMessage);
-    });
-
-    return errors;
-  }
-
-
-  
 
   @PostMapping("/login")
   public ResponseEntity<Map<String, String>> login(@RequestBody @Valid AuthenticationRequest request){
     return authService.authenticate(request);
   }
+
+
+
+  @PostMapping("/check-token")
+  public ResponseEntity<Map<String, String>> checkToken (@RequestBody @Valid CheckValidRequest data){
+    return authService.checkToken(data);
+  }
+
+
+
+
+   /* CHECKING USER'S CREATION ERROR */
+   @ResponseStatus(code = HttpStatus.FORBIDDEN)
+   @ExceptionHandler(MethodArgumentNotValidException.class)
+   public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
+ 
+     Map<String, String> errors = new HashMap<>();
+ 
+     ex.getBindingResult().getAllErrors().forEach(error ->{
+       String errorMessage = error.getDefaultMessage();
+       errors.put("error", errorMessage);
+     });
+ 
+     return errors;
+   }
   
 }

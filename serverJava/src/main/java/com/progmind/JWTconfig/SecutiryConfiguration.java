@@ -1,4 +1,4 @@
-package com.progmind.progmind.JWTconfig;
+package com.progmind.JWTconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.progmind.progmind.services;
+package com.progmind.services;
 
-import com.progmind.progmind.models.User;
+import com.progmind.models.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.progmind.progmind.JWTconfig.JwtService;
-import com.progmind.progmind.controller.AuthenticationRequest;
-import com.progmind.progmind.repositories.UserRepository;
+import com.progmind.JWTconfig.JwtService;
+import com.progmind.controller.AuthenticationRequest;
+import com.progmind.controller.CheckValidRequest;
+import com.progmind.repositories.UserRepository;
 
 
 @Service
@@ -46,7 +46,7 @@ public class AuthenticationService {
     Optional<User> usersExisting = checkExistingUser(user.getEmail());
 
     if(!usersExisting.isEmpty()){
-      message.put("error", "O usuário já existe.");
+      message.put("error", "Este e-mail já está sendo usado.");
       return ResponseEntity.badRequest().body(message);
     }
     
@@ -56,6 +56,7 @@ public class AuthenticationService {
     var jwtToken = jwtService.generateToken(newUser);
 
     message.put("token", jwtToken);
+    message.put("userEmail", user.getEmail());
     return ResponseEntity.ok().body(message);
 
   }
@@ -66,14 +67,44 @@ public class AuthenticationService {
   public ResponseEntity<Map<String, String>> authenticate(AuthenticationRequest request){
 
     Map<String, String> message = new HashMap<>();
-    authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-      
     Optional<User> user = repository.findByEmail(request.getEmail());
-    var jwtToken = jwtService.generateToken(user.get());
 
-    message.put("token", jwtToken);
-    return ResponseEntity.ok().body(message);
+    try {
 
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+      var jwtToken = jwtService.generateToken(user.get());
+
+      message.put("token", jwtToken);
+      message.put("userEmail", request.getEmail());
+      return ResponseEntity.ok().body(message);
+      
+    } catch (Exception e) {
+      message.put("error", "Usuário ou senha inválido.");
+      return ResponseEntity.badRequest().body(message);
+    }
+
+  }
+
+
+
+
+  /* CHECK IF THE USER'S TOKEN IS VALID */
+  public ResponseEntity<Map<String, String>> checkToken(CheckValidRequest data){
+
+    Map<String, String> message = new HashMap<>();
+    Optional<User> user = repository.findByEmail(data.getUserEmail());
+    
+    try {
+      jwtService.isTokenValid(data.getToken(), user.get());
+
+      message.put("message", "Token correto.");
+       return ResponseEntity.ok().body(message);
+
+    } catch (Exception e) {
+      message.put("error", "Token inválido.");
+      return ResponseEntity.badRequest().body(message);
+    }
+    
   }
   
 }

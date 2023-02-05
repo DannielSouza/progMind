@@ -1,4 +1,4 @@
-package com.progmind.progmind;
+package com.progmind;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

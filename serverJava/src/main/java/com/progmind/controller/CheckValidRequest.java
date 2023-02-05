@@ -1,4 +1,4 @@
-package com.progmind.progmind.controller;
+package com.progmind.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class CheckValidRequest {
   
-  private String email;
-  private String password;
+  private String token;
+  private String userEmail;
 
 }

@@ -1,4 +1,4 @@
-package com.progmind.progmind.JWTconfig;
+package com.progmind.JWTconfig;
 
 import java.security.Key;
 import java.util.Date;
