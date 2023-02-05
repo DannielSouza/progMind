@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.progmind.models.Payload;
 import com.progmind.models.User;
 import com.progmind.services.AuthenticationService;
 
@@ -42,8 +43,8 @@ public class UserController {
 
 
   @PostMapping("/check-token")
-  public ResponseEntity<Map<String, String>> checkToken (@RequestBody @Valid CheckValidRequest data){
-    return authService.checkToken(data);
+  public ResponseEntity<Map<String, String>> checkToken (@RequestBody String token){
+    return authService.checkToken(token);
   }
 
 

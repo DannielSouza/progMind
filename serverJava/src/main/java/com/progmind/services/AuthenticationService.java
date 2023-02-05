@@ -1,7 +1,9 @@
 package com.progmind.services;
 
+import com.progmind.models.Payload;
 import com.progmind.models.User;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -13,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.progmind.JWTconfig.JwtService;
 import com.progmind.controller.AuthenticationRequest;
 import com.progmind.controller.CheckValidRequest;
@@ -56,7 +59,6 @@ public class AuthenticationService {
     var jwtToken = jwtService.generateToken(newUser);
 
     message.put("token", jwtToken);
-    message.put("userEmail", user.getEmail());
     return ResponseEntity.ok().body(message);
 
   }
@@ -75,7 +77,6 @@ public class AuthenticationService {
       var jwtToken = jwtService.generateToken(user.get());
 
       message.put("token", jwtToken);
-      message.put("userEmail", request.getEmail());
       return ResponseEntity.ok().body(message);
       
     } catch (Exception e) {
@@ -89,21 +90,55 @@ public class AuthenticationService {
 
 
   /* CHECK IF THE USER'S TOKEN IS VALID */
-  public ResponseEntity<Map<String, String>> checkToken(CheckValidRequest data){
+  public ResponseEntity<Map<String, String>> checkToken(String token){
 
     Map<String, String> message = new HashMap<>();
-    Optional<User> user = repository.findByEmail(data.getUserEmail());
     
-    try {
-      jwtService.isTokenValid(data.getToken(), user.get());
 
-      message.put("message", "Token correto.");
-       return ResponseEntity.ok().body(message);
+    String[] chunks = token.split("\\.");
 
+    Base64.Decoder decoder = Base64.getUrlDecoder();
+    String payload = new String(decoder.decode(chunks[1]));
+    Gson g = new Gson();  
+    Payload payloadJSON;
+
+
+    try{
+      payloadJSON = g.fromJson(payload, Payload.class);
+
+
+      Optional<User> user = repository.findByEmail(payloadJSON.getSub());
+    
+      if(user.get().getEmail() != payloadJSON.getSub()){
+        message.put("message", "Token valido.");
+        return ResponseEntity.ok().body(message);
+      }
+
+      message.put("message", "Token inválido.");
+      return ResponseEntity.badRequest().body(message);
+      
     } catch (Exception e) {
-      message.put("error", "Token inválido.");
+      message.put("error2", "Token inválido.");
       return ResponseEntity.badRequest().body(message);
     }
+
+
+
+    /* Map<String, String> message = new HashMap<>();
+    Optional<User> user = repository.findByEmail(request.getEmail());
+
+    try {
+
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+      var jwtToken = jwtService.generateToken(user.get());
+
+      message.put("token", jwtToken);
+      return ResponseEntity.ok().body(message);
+      
+    } catch (Exception e) {
+      message.put("error", "Usuário ou senha inválido.");
+      return ResponseEntity.badRequest().body(message);
+    } */
     
   }
   
