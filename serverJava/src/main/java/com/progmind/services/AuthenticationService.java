@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.progmind.JWTconfig.JwtService;
 import com.progmind.controller.AuthenticationRequest;
-import com.progmind.controller.CheckValidRequest;
 import com.progmind.repositories.UserRepository;
 
 
@@ -59,6 +58,7 @@ public class AuthenticationService {
     var jwtToken = jwtService.generateToken(newUser);
 
     message.put("token", jwtToken);
+    message.put("userEmail", newUser.getEmail());
     return ResponseEntity.ok().body(message);
 
   }
@@ -77,6 +77,7 @@ public class AuthenticationService {
       var jwtToken = jwtService.generateToken(user.get());
 
       message.put("token", jwtToken);
+      message.put("userEmail", user.get().getEmail());
       return ResponseEntity.ok().body(message);
       
     } catch (Exception e) {
@@ -111,6 +112,7 @@ public class AuthenticationService {
     
       if(user.get().getEmail() != payloadJSON.getSub()){
         message.put("message", "Token valido.");
+        message.put("userEmail", user.get().getEmail());
         return ResponseEntity.ok().body(message);
       }
 
@@ -118,28 +120,10 @@ public class AuthenticationService {
       return ResponseEntity.badRequest().body(message);
       
     } catch (Exception e) {
-      message.put("error2", "Token inválido.");
+      message.put("error", "Token inválido.");
       return ResponseEntity.badRequest().body(message);
     }
 
-
-
-    /* Map<String, String> message = new HashMap<>();
-    Optional<User> user = repository.findByEmail(request.getEmail());
-
-    try {
-
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-      var jwtToken = jwtService.generateToken(user.get());
-
-      message.put("token", jwtToken);
-      return ResponseEntity.ok().body(message);
-      
-    } catch (Exception e) {
-      message.put("error", "Usuário ou senha inválido.");
-      return ResponseEntity.badRequest().body(message);
-    } */
-    
   }
   
 }
