@@ -42,7 +42,8 @@ public class UserController {
 
 
   @PostMapping("/check-token")
-  public ResponseEntity<Map<String, String>> checkToken (@RequestBody String token){
+  public ResponseEntity<Map<String, String>> checkToken (@RequestBody @Valid CheckValidRequest token){
+
     return authService.checkToken(token);
   }
 

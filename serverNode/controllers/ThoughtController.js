@@ -13,8 +13,7 @@ module.exports = class ThoughtController{
     
     try {
       await axios.post("http://localhost:8080/user/check-token", {
-        token,
-        userEmail
+        token
       });
     } catch (error) {
       return res.status(422).json({error: "Token Inválido."})
@@ -48,7 +47,9 @@ module.exports = class ThoughtController{
   }
 
 
-  
+
+
+  /* GET ALL USER'S THOUGHTS */
   static async getUserThoughts(req, res){
     const {userEmail} = req.body
 
@@ -56,5 +57,37 @@ module.exports = class ThoughtController{
     console.log(thoughts);
     res.status(200).send(thoughts)
   }
+
+
+
+  /* DELETE USER'S THOUGHT */
+  static async deleteThought(req, res){
+
+    const {id} = req.params
+    const token = getToken(req);
+    let userEmail;
+
+    const thought = await Thought.findOne({_id: id})
+    if(!thought) return res.status(404).json({error: "Não encontrado."})
+
+
+    try {
+      await axios.post("http://localhost:8080/user/check-token", {
+        token
+      }).then(response=> userEmail = response.data.userEmail)
+    } catch (error) {
+      return res.status(422).json({error: "Token Inválido."})
+    }
+
+
+    if(userEmail === thought.authorEmail){
+      await Thought.findByIdAndDelete(thought._id)
+      return res.status(200).json({message: "Excluido com sucesso."})
+    }else{
+      return res.status(422).json({message: "Não foi possivel concluir a tarefa."})
+    }
+    
+  }
+
 
 }

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.progmind.JWTconfig.JwtService;
 import com.progmind.controller.AuthenticationRequest;
+import com.progmind.controller.CheckValidRequest;
 import com.progmind.repositories.UserRepository;
 
 
@@ -91,18 +92,18 @@ public class AuthenticationService {
 
 
   /* CHECK IF THE USER'S TOKEN IS VALID */
-  public ResponseEntity<Map<String, String>> checkToken(String token){
+  public ResponseEntity<Map<String, String>> checkToken(CheckValidRequest token){
+
+    System.out.println(token.getToken());
 
     Map<String, String> message = new HashMap<>();
     
-
-    String[] chunks = token.split("\\.");
+    String[] chunks = token.getToken().split("\\.");
 
     Base64.Decoder decoder = Base64.getUrlDecoder();
     String payload = new String(decoder.decode(chunks[1]));
     Gson g = new Gson();  
     Payload payloadJSON;
-
 
     try{
       payloadJSON = g.fromJson(payload, Payload.class);
@@ -116,7 +117,7 @@ public class AuthenticationService {
         return ResponseEntity.ok().body(message);
       }
 
-      message.put("message", "Token inválido.");
+      message.put("error", "Token inválido.");
       return ResponseEntity.badRequest().body(message);
       
     } catch (Exception e) {

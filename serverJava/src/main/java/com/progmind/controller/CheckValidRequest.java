@@ -12,6 +12,5 @@ import lombok.NoArgsConstructor;
 public class CheckValidRequest {
   
   private String token;
-  private String userEmail;
 
 }
