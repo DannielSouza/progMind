@@ -60,6 +60,7 @@ public class AuthenticationService {
 
     message.put("token", jwtToken);
     message.put("userEmail", newUser.getEmail());
+    message.put("userName", newUser.getName());
     return ResponseEntity.ok().body(message);
 
   }
@@ -79,6 +80,7 @@ public class AuthenticationService {
 
       message.put("token", jwtToken);
       message.put("userEmail", user.get().getEmail());
+      message.put("userName",  user.get().getName());
       return ResponseEntity.ok().body(message);
       
     } catch (Exception e) {
@@ -94,26 +96,34 @@ public class AuthenticationService {
   /* CHECK IF THE USER'S TOKEN IS VALID */
   public ResponseEntity<Map<String, String>> checkToken(CheckValidRequest token){
 
-    System.out.println(token.getToken());
-
     Map<String, String> message = new HashMap<>();
     
     String[] chunks = token.getToken().split("\\.");
 
     Base64.Decoder decoder = Base64.getUrlDecoder();
     String payload = new String(decoder.decode(chunks[1]));
+
     Gson g = new Gson();  
-    Payload payloadJSON;
+    Payload payloadJSON =g.fromJson(payload, Payload.class);
+
+    Optional<User> user;
+
+    try{
+      user = repository.findByEmail(payloadJSON.getSub());
+      user.get().getEmail();
+
+    }catch (Exception e){
+      message.put("error", "Token inválido.");
+      return ResponseEntity.badRequest().body(message);
+    }
 
     try{
       payloadJSON = g.fromJson(payload, Payload.class);
-
-
-      Optional<User> user = repository.findByEmail(payloadJSON.getSub());
     
       if(user.get().getEmail() != payloadJSON.getSub()){
         message.put("message", "Token valido.");
         message.put("userEmail", user.get().getEmail());
+        message.put("userName",  user.get().getName());
         return ResponseEntity.ok().body(message);
       }
 
