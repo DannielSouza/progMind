@@ -1,13 +1,21 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+
+
+/* font-family: 'M PLUS Rounded 1c', sans-serif; */
+/* font-family: 'Roboto', sans-serif; */
+
+*{
+  margin: 0%;
+  padding: 0%;
+  list-style: none;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.mainContainer{
+  display: grid;
+  grid-template-columns: 200px 1fr;
 }
