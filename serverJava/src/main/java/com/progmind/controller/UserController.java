@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,7 @@ public class UserController {
 
 
 
+  @CrossOrigin("http://localhost:3000")
   @PostMapping("/check-token")
   public ResponseEntity<Map<String, String>> checkToken (@RequestBody @Valid CheckValidRequest token){
 

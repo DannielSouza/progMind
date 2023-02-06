@@ -1,18 +1,31 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import Sidebar from './components/Sidebar';
-import Home from './pages/Home';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
+
+  const [showSidebar, setShowSidebar] = React.useState(false)
+
+  React.useEffect(()=>{
+    if(!window.location.href.includes("/login")){
+      setShowSidebar(true)
+    }
+  },[])
+
+
   return (
     <BrowserRouter>
-    <div className='mainContainer'>
-    <Sidebar />
-      <Routes>
 
-        <Route path='/' element={ <Home /> } />
+      <div className="mainContainer">
+      {showSidebar && <Sidebar />}
+        <Routes>
+          <Route path="/login" element={<Login />} />
 
-      </Routes>
-    </div>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
