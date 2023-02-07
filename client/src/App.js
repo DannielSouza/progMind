@@ -22,11 +22,11 @@ function App() {
       <Provider store={store}>
 
       <div className="mainContainer">
-      {showSidebar && <Sidebar />}
+      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
         <Routes>
           <Route path="/auth" element={<Login setShowSidebar={setShowSidebar} />} />
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home setShowSidebar={setShowSidebar} />} />
         </Routes>
       </div>
 

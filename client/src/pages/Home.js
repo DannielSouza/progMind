@@ -6,7 +6,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import rootReducer from '../redux/rootReducer';
 
 const Home = () => {
-  /* const {currentUser} = useSelector(rootReducer => rootReducer.userReducer) */
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

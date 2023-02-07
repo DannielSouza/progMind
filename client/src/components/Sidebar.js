@@ -5,8 +5,22 @@ import historyIcon from '../assets/history.png'
 import graphIcon from '../assets/graph.png'
 import plusIcon from '../assets/plus.png'
 import exitIcon from '../assets/exit.png'
+import { logout } from '../redux/user/slice'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-const Sidebar = () => {
+const Sidebar = ({setShowSidebar}) => {
+  
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  function logoutUser(){
+    localStorage.removeItem("progMindAuth")
+    dispatch(logout())
+    navigate("/auth")
+    setShowSidebar(false)
+  }
+
   return (
     <header className={style.container}>
       <h2 className={style.title}>Prog<span>Mind</span></h2>
@@ -26,7 +40,7 @@ const Sidebar = () => {
           Conta
         </span>
         <ul className={style.listContainer}>
-          <div> <img src={exitIcon} alt="Sair da conta" /> <li>Sair</li></div>
+          <div onClick={logoutUser}> <img src={exitIcon} alt="Sair da conta" /> <li>Sair</li></div>
         </ul>
       </div>
 
