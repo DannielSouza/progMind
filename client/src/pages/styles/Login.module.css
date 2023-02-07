@@ -1,0 +1,13 @@
+.container{
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wallpaperImage{
+  max-width: 110%;
+  max-height: 100%;
+  transform: translateX(-20px);
+}

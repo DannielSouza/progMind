@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './styles/Sidebar.module.css'
 
-import historyIcon from '../images/history.png'
-import graphIcon from '../images/graph.png'
-import plusIcon from '../images/plus.png'
-import exitIcon from '../images/exit.png'
+import historyIcon from '../assets/history.png'
+import graphIcon from '../assets/graph.png'
+import plusIcon from '../assets/plus.png'
+import exitIcon from '../assets/exit.png'
 
 const Sidebar = () => {
   return (
