@@ -123,7 +123,8 @@ public class AuthenticationService {
       if(user.get().getEmail() != payloadJSON.getSub()){
         message.put("message", "Token valido.");
         message.put("userEmail", user.get().getEmail());
-        message.put("userName",  user.get().getName());
+        message.put("userName", user.get().getName());
+        message.put("token", token.getToken());
         return ResponseEntity.ok().body(message);
       }
 

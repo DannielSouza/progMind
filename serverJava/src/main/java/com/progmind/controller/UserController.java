@@ -27,14 +27,14 @@ public class UserController {
   
   private final AuthenticationService authService;
 
-
+  @CrossOrigin("http://localhost:3000")
   @PostMapping("/register")
   public ResponseEntity<Map<String, String>> register(@RequestBody @Valid User user){
     return authService.register(user);
   }
 
 
-
+  @CrossOrigin("http://localhost:3000")
   @PostMapping("/login")
   public ResponseEntity<Map<String, String>> login(@RequestBody @Valid AuthenticationRequest request){
     return authService.authenticate(request);
