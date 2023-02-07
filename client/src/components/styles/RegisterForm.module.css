@@ -60,7 +60,7 @@
 
 .changeScreen{
   font-size: .75rem;
-  transform: translate(-60px, -10px);
+  transform: translate(-80px, -10px);
   margin-bottom: 1rem;
   animation: animaAppear .8s ease-in forwards;
 }
@@ -87,7 +87,6 @@
 .sendButton:hover{
   background-color: #52adea;
 }
-
 
 @keyframes animaAppearLeft{
   from{

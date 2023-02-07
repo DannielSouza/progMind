@@ -18,7 +18,7 @@ const Home = () => {
       console.log(verifiedUser) //VER COMO VAI ARMAZENAR ISSO GLOBALMENTE AINDA
     }
     else{
-      navigate('/login')
+      navigate('/auth')
     }
   }
   checkAuth()

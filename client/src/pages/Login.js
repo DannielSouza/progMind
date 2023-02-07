@@ -1,19 +1,18 @@
 import React from "react";
 import style from "./styles/Login.module.css";
-import wallpaperImage from "../assets/wallpaper.jpg";
 import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
 const Login = () => {
+
+  const [screen, setScreen] = React.useState("LOGIN")
+
   return (
     <section className={style.container}>
       
-      <LoginForm />
+      {screen === "LOGIN" && <LoginForm setScreen={setScreen}/>}
+      {screen === "REGISTER" && <RegisterForm setScreen={setScreen}/>}
 
-      <img
-        className={style.wallpaperImage}
-        src={wallpaperImage}
-        alt="wallpaper"
-      />
     </section>
   );
 };

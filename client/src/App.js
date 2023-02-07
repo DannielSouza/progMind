@@ -9,7 +9,7 @@ function App() {
   const [showSidebar, setShowSidebar] = React.useState(false)
 
   React.useEffect(()=>{
-    if(!window.location.href.includes("/login")){
+    if(!window.location.href.includes("/auth")){
       setShowSidebar(true)
     }
   },[])
@@ -21,7 +21,7 @@ function App() {
       <div className="mainContainer">
       {showSidebar && <Sidebar />}
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Login />} />
 
           <Route path="/" element={<Home />} />
         </Routes>
