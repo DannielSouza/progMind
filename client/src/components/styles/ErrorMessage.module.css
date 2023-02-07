@@ -1,0 +1,25 @@
+.errorContainer{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 40px;
+  background-color: #EC7063;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  animation: animaSlice .3s ease-in-out forwards;
+}
+
+@keyframes animaSlice {
+  from{
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to{
+    transform: initial;
+    opacity: initial;
+  }
+}

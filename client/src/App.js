@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from "react-redux";
+import store from './redux/store'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
@@ -17,15 +19,18 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Provider store={store}>
 
       <div className="mainContainer">
       {showSidebar && <Sidebar />}
         <Routes>
-          <Route path="/auth" element={<Login />} />
+          <Route path="/auth" element={<Login setShowSidebar={setShowSidebar} />} />
 
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
+
+      </Provider>
     </BrowserRouter>
   );
 }

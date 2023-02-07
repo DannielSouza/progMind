@@ -3,14 +3,14 @@ import style from "./styles/Login.module.css";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
 
-const Login = () => {
+const Login = ({setShowSidebar}) => {
 
   const [screen, setScreen] = React.useState("LOGIN")
 
   return (
     <section className={style.container}>
       
-      {screen === "LOGIN" && <LoginForm setScreen={setScreen}/>}
+      {screen === "LOGIN" && <LoginForm setShowSidebar={setShowSidebar} setScreen={setScreen}/>}
       {screen === "REGISTER" && <RegisterForm setScreen={setScreen}/>}
 
     </section>

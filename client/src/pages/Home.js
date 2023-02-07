@@ -1,27 +1,17 @@
 import React from 'react'
 import style from './styles/Home.module.css'
-import {verifyUser} from '../helpers/Api';
+import checkAuth from '../helpers/autoCheckAuth';
 import { useNavigate } from "react-router-dom";
+import {useSelector, useDispatch} from 'react-redux'
+import rootReducer from '../redux/rootReducer';
 
 const Home = () => {
-
-  const [logged, setLogged] = React.useState(false)
+  /* const {currentUser} = useSelector(rootReducer => rootReducer.userReducer) */
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   React.useEffect(()=>{
-    async function checkAuth(){
-    let auth = localStorage.getItem("progMindAuth")
-    if(auth){
-      setLogged(true)
-      let authJSON = JSON.parse(auth)
-      const verifiedUser = await verifyUser(authJSON.token)
-      console.log(verifiedUser) //VER COMO VAI ARMAZENAR ISSO GLOBALMENTE AINDA
-    }
-    else{
-      navigate('/auth')
-    }
-  }
-  checkAuth()
+    checkAuth(dispatch, navigate)
   },[])
 
 

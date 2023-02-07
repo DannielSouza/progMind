@@ -12,5 +12,17 @@ async function verifyUser(token) {
 }
 
 
+async function loginUser(userData){
 
-export { verifyUser };
+  const response = await axios.post("http://localhost:8080/user/login", {
+    email: userData.email,
+    password: userData.password
+  });
+  const data = await response.data;
+
+  return data;
+}
+
+
+
+export { verifyUser, loginUser };
