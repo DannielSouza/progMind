@@ -1,7 +1,7 @@
 import axios from "axios";
 
+/* CHECK USER'S TOKEN */
 async function verifyUser(token) {
-
   const response = await axios.post(
     "http://localhost:8080/user/check-token",
     {token: token}
@@ -12,8 +12,8 @@ async function verifyUser(token) {
 }
 
 
+/* LOGIN USER */
 async function loginUser(userData){
-
   const response = await axios.post("http://localhost:8080/user/login", {
     email: userData.email,
     password: userData.password
@@ -24,5 +24,14 @@ async function loginUser(userData){
 }
 
 
+/* REGISTER USER */
+async function registerUser(userData){
+  const response = await axios.post("http://localhost:8080/user/register", userData);
+  const data = await response.data;
 
-export { verifyUser, loginUser };
+  return data;
+}
+
+
+
+export { verifyUser, loginUser, registerUser };

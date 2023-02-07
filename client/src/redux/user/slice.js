@@ -13,10 +13,13 @@ const userSlice = createSlice({
     },
     login: (state, action)=>{
       state.currentUser = action.payload
+    },
+    register: (state, action)=>{
+      state.currentUser = action.payload
     }
   }
 })
 
-export const { autoAuthenticationUser, login } = userSlice.actions
+export const { autoAuthenticationUser, login, register } = userSlice.actions
 
 export default userSlice.reducer

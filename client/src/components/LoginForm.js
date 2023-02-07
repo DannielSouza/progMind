@@ -35,7 +35,6 @@ const LoginForm = ({setScreen, setShowSidebar}) => {
     }finally{
       setLoading(false)
     }
-
   }
 
   return (

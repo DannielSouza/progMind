@@ -70,7 +70,8 @@
   cursor: pointer;
 }
 
-.sendButton{
+.sendButton,
+.sendButtonDisabled{
   width: 290px;
   height: 30px;
   color: white;
@@ -82,6 +83,11 @@
   cursor: pointer;
   transition: .5s;
   animation: animaAppearLeft .5s ease-in forwards;
+}
+
+.sendButtonDisabled{
+  cursor: not-allowed;
+  background-color: #adcce0;
 }
 
 .sendButton:hover{

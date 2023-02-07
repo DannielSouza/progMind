@@ -11,7 +11,7 @@ const Login = ({setShowSidebar}) => {
     <section className={style.container}>
       
       {screen === "LOGIN" && <LoginForm setShowSidebar={setShowSidebar} setScreen={setScreen}/>}
-      {screen === "REGISTER" && <RegisterForm setScreen={setScreen}/>}
+      {screen === "REGISTER" && <RegisterForm setShowSidebar={setShowSidebar} setScreen={setScreen}/>}
 
     </section>
   );
