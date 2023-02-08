@@ -25,7 +25,9 @@ const Sidebar = ({setShowSidebar}) => {
     <header className={style.container}>
       <h2 className={style.title}>Prog<span>Mind</span></h2>
 
-      <button className={style.createIcon}><img src={plusIcon} alt="vizualizar historico" /> Novo pensamento</button>
+      <div className={style.createContainer}>
+        <button className={style.createIcon}><img src={plusIcon} alt="vizualizar historico" /> Novo pensamento</button>
+      </div>
 
       <div className={style.menuContainer}>
         <span>

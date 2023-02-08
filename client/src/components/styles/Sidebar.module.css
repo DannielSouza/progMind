@@ -1,12 +1,18 @@
 .container{
-  width: 200px;
+  width: 250px;
   background: rgb(245, 245, 245);
   height: 100vh;
   padding: 12px;
+  box-shadow: 0 0 5px 3px darkgray;
+  z-index: 99;
 }
+
 
 .title{
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'M PLUS Rounded 1c', sans-serif !important;
   color: #212F3D;
   margin-bottom: 2rem;
@@ -15,6 +21,13 @@
 
 .title span{
   color: #85C1E9;
+}
+
+.createContainer{
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .createIcon{
