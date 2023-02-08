@@ -7,8 +7,7 @@ const thought = mongoose.model("Thought", new Schema({
   subFeeling: {type: String, required: true},
   bodyFeeling: {type: String, required: true},
   situation: {type: String, required: false},
-  thoughts: {type: String, required: false},
-  action: {type: String, required: false},
+  action: {type: String, required: false}
 },
 {timestamps: true}
 ))

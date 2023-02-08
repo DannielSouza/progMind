@@ -9,7 +9,6 @@ module.exports = class ThoughtController{
   static async create(req, res){
 
     const token = getToken(req);
-    const {userEmail} = req.body
     
     try {
       await axios.post("http://localhost:8080/user/check-token", {
@@ -20,19 +19,18 @@ module.exports = class ThoughtController{
     }
     
 
-    const {authorEmail, mainFeeling, subFeeling, bodyFeeling, situation, thoughts, action} = req.body
+    const {authorEmail, mainFeeling, subFeeling, bodyFeeling, situation, action} = req.body
 
     if(!mainFeeling) return res.status(422).json({error: "Por favor, preencha todos os campos obrigatórios."})
     if(!subFeeling) return res.status(422).json({error: "Por favor, preencha todos os campos obrigatórios."})
     if(!bodyFeeling) return res.status(422).json({error: "Por favor, preencha todos os campos obrigatórios."})
 
     const thought = new Thought({
-      authorEmail: userEmail,
+      authorEmail,
       mainFeeling,
       subFeeling,
       bodyFeeling,
       situation,
-      thoughts,
       action
     })
 
