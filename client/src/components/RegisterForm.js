@@ -48,17 +48,17 @@ const RegisterForm = ({setScreen, setShowSidebar}) => {
 
       <label className={style.labelItem}>
           <img src={userIcon} alt="user icon"/>
-          <input onChange={changeUserData} required name='name' type="text" placeholder='Cadastre seu nome'/>
+          <input autoComplete='off' onChange={changeUserData} required name='name' type="text" placeholder='Cadastre seu nome'/>
         </label>
 
         <label className={style.labelItem}>
           <img src={emailIcon} alt="mail icon"/>
-          <input onChange={changeUserData} required name='email' type="email" placeholder='Cadastre seu e-mail'/>
+          <input autoComplete='off' onChange={changeUserData} required name='email' type="email" placeholder='Cadastre seu e-mail'/>
         </label>
 
         <label className={style.labelItem}>
         <img src={keyIcon} alt="key icon"/>
-          <input onChange={changeUserData} required name='password' type="password" placeholder='Cadastre sua senha'/>
+          <input autoComplete='off' onChange={changeUserData} required name='password' type="password" placeholder='Cadastre sua senha'/>
         </label>
 
         <p className={style.changeScreen}>Já possui conta? <span onClick={()=>setScreen("LOGIN")}>Entrar.</span></p>

@@ -44,12 +44,12 @@ const LoginForm = ({setScreen, setShowSidebar}) => {
 
         <label className={style.labelItem}>
           <img src={emailIcon} alt="mail icon"/>
-          <input onChange={changeUserData} type="email" name='email' placeholder='Insira seu e-mail cadastrado' required/>
+          <input autoComplete='off' onChange={changeUserData} type="email" name='email' placeholder='Insira seu e-mail cadastrado' required/>
         </label>
 
         <label className={style.labelItem}>
         <img src={keyIcon} alt="key icon"/>
-          <input onChange={changeUserData} type="password" name='password' placeholder='Insira sua senha cadastrada' required/>
+          <input autoComplete='off' onChange={changeUserData} type="password" name='password' placeholder='Insira sua senha cadastrada' required/>
         </label>
 
         <p className={style.changeScreen}>Não possui conta? <span onClick={()=>setScreen("REGISTER")}>Registre-se.</span></p>
