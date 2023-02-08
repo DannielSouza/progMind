@@ -11,6 +11,7 @@
   font-weight: bold;
   color: white;
   animation: animaSlice 5s ease-in-out forwards;
+  z-index: 999;
 }
 
 @keyframes animaSlice {

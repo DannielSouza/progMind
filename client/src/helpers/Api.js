@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 /* CHECK USER'S TOKEN */
 async function verifyUser(token) {
   const response = await axios.post(
@@ -33,5 +34,17 @@ async function registerUser(userData){
 }
 
 
+/* CREATE TOUGHT USER */
+async function createThought(newTought, token){
+  const response = await axios.post("http://localhost:4000/thought/create", newTought, {
+    headers:{
+      Authorization: `Bearer ${token}`
+    }
+  });
+  const data = await response.data;
 
-export { verifyUser, loginUser, registerUser };
+  return data;
+}
+
+
+export { verifyUser, loginUser, registerUser, createThought };
