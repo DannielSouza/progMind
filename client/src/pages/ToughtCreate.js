@@ -7,22 +7,20 @@ import ToughtCreateFinal from '../components/ToughtCreateFinal'
 
 
 const ToughtCreate = () => {
-  
+  const {currentPart} = useSelector(rootReducer => rootReducer.toughtReducer)
   const {currentUser} = useSelector(rootReducer => rootReducer.userReducer)
-  const [creationPart, setCreationPart] = React.useState("1")
+  
+  const [creationPart, setCreationPart] = React.useState(currentPart)
 
-  const [thoughtData, setThoughtData] = React.useState({
-    subFeeling: null,
-    bodyFeeling: null,
-    situation: null,
-    action: null
-  })
+  React.useEffect(()=>{
+    setCreationPart(currentPart)
+  },[currentPart])
 
   if(currentUser) return(
     <section>
-      {creationPart === "1" && <ToughtCreatePart1 setThoughtData={setThoughtData} setCreationPart={setCreationPart}/>}
-      {creationPart === "2" && <ToughtCreatePart2 setThoughtData={setThoughtData} thoughtData={thoughtData} setCreationPart={setCreationPart}/>}
-      {creationPart === "3" && <ToughtCreateFinal setCreationPart={setCreationPart}/>}
+      {creationPart === "1" && <ToughtCreatePart1 />}
+      {creationPart === "2" && <ToughtCreatePart2 />}
+      {creationPart === "3" && <ToughtCreateFinal />}
     </section>
   )
   

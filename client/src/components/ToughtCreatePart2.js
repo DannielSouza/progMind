@@ -3,10 +3,14 @@ import style from "./styles/ToughtCreatePart2.module.css";
 import { useSelector } from "react-redux";
 import {createThought} from '../helpers/Api'
 import ErrorMessage from './ErrorMessage'
+import { useDispatch } from "react-redux";
+import { changeTought, changeToughtPart, updateSubFeelingDifferent, updateBodyFeelingDifferent, updateactionDifferent} from "../redux/tought/slice"
 
-const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
+const ToughtCreatePart2 = () => {
+  const dispatch = useDispatch()
 
   const {currentUser} = useSelector(rootReducer => rootReducer.userReducer)
+  const {currentTought, differentValues} = useSelector(rootReducer => rootReducer.toughtReducer)
 
   const [ subFeeling, setSubfeeling ] = React.useState("")
   const [ subFeelingDifferent, setSubfeelingDifferent ] = React.useState("")
@@ -22,25 +26,49 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
   const [error, setError] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
 
+  React.useEffect(()=>{
+    if(currentTought.subFeeling){
+      if(differentValues.subFeelingDifferent === true){  
+        setSubfeeling("outro")
+        setSubfeelingDifferent(currentTought.subFeeling)}
+      else{
+        setSubfeeling(currentTought.subFeeling)
+      }
+    }
+    if(currentTought.bodyFeeling){
+      if(differentValues.bodyFeelingDifferent === true){  
+        setBodyFeeling("outro")
+        setBodyFeelingDifferent(currentTought.bodyFeeling)}
+      else{
+        setBodyFeeling(currentTought.bodyFeeling)
+      }
+    }
+    if(currentTought.action){
+      if(differentValues.actionDifferent === true){  
+        setAction("outro")
+        setActionDifferent(currentTought.action)}
+      else{
+        setAction(currentTought.action)
+      }
+    }
+    if(currentTought.situation){
+      setSituation(currentTought.situation)
+    } 
+  },[])
+
   function confirmAndTrySubmit(){
     setLoading(true)
     setError(false)
-    setThoughtData(prev=>{
-      return{
-        ...prev,
-        subFeeling: subFeeling === "outro" ? subFeelingDifferent : subFeeling,
-        bodyFeeling: bodyFeeling === "outro" ? bodyFeelingDifferent : bodyFeeling,
-        situation,
-        action: action === "outro" ? actionDifferent : action,
-      }
-    })
+
+    saveToughtCreationChanges()
+    
     createNewThought()
   }
 
   async function createNewThought(){
     try {
-      await createThought(thoughtData, currentUser.token)
-      setCreationPart("3")
+      await createThought(currentTought, currentUser.token)
+      dispatch(changeToughtPart("3"))
     } catch (error) {
       setError(error.response.data.error)
     }finally{
@@ -48,6 +76,24 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
     }
   }
 
+  function backThoughtCreationPart(){
+    dispatch(changeToughtPart("1"))
+    saveToughtCreationChanges()
+  }
+
+  function saveToughtCreationChanges(){
+
+    dispatch(updateSubFeelingDifferent(subFeeling === "outro" ? true : false))
+    dispatch(updateBodyFeelingDifferent(bodyFeeling === "outro" ? true : false))
+    dispatch(updateactionDifferent(action === "outro" ? true : false))
+    
+    dispatch(changeTought({
+      subFeeling: subFeeling === "outro" ? subFeelingDifferent : subFeeling,
+      bodyFeeling: bodyFeeling === "outro" ? bodyFeelingDifferent : bodyFeeling,
+      situation: situation,
+      action: action === "outro" ? actionDifferent : action,
+    }))
+  }
 
   return (
     <section className={style.container}>
@@ -60,6 +106,7 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
         type="text"
         className={style.textInput}
         placeholder="Digite aqui"
+        value={situation}
         onChange={({target})=> setSituation(target.value)}
         required
         />
@@ -94,6 +141,7 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
         {subFeeling === 'outro' && 
           <input 
           type="text"
+          value={subFeelingDifferent}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
           onChange={({target})=> setSubfeelingDifferent(target.value)}
@@ -131,6 +179,7 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
 
         {bodyFeeling === 'outro' && 
           <input 
+          value={bodyFeelingDifferent}
           type="text"
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
@@ -170,6 +219,7 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
         {action === 'outro' && 
           <input 
           type="text"
+          value={actionDifferent}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
           onChange={({target})=> setActionDifferent(target.value)}
@@ -179,6 +229,8 @@ const ToughtCreatePart2 = ({setThoughtData, setCreationPart, thoughtData}) => {
         }
       </label>
 
+
+        <button onClick={backThoughtCreationPart}>Voltar</button>
         {loading?
           <button className={style.confirmButtonDisabled}>Enviar</button>
         :

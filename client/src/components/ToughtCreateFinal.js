@@ -1,11 +1,14 @@
 import React from 'react'
 import style from './styles/ToughtCreateFinal.module.css'
+import { useDispatch } from "react-redux";
+import { resetToughtCreation, changeToughtPart} from "../redux/tought/slice"
 
-const ToughtCreateFinal = ({setCreationPart}) => {
-
+const ToughtCreateFinal = () => {
+  const dispatch = useDispatch()
   
   function backHome(){
-    setCreationPart("1")
+    dispatch(resetToughtCreation())
+    dispatch(changeToughtPart("1"))
   }
   
   return (
