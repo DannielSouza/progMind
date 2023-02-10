@@ -61,10 +61,11 @@ const ToughtCreatePart2 = () => {
   function confirmAndTrySubmit(){
     setLoading(true)
     setError(false)
-
-    saveToughtCreationChanges()
+    /* saveToughtCreationChanges() */
     
-    createNewThought()
+    setTimeout(() => {
+      createNewThought()
+    }, );
   }
 
   async function createNewThought(){
@@ -125,7 +126,10 @@ const ToughtCreatePart2 = () => {
         style={{borderColor: mainColor}}
         onMouseOver={mouseOverEnterShadow}
         onMouseLeave={mouseOverLeaveShadow}
-        onChange={({target})=> setSituation(target.value)}
+        onChange={({target})=> {
+          setSituation(target.value)
+          saveToughtCreationChanges()
+        }}
         required
         />
       </label>
@@ -168,7 +172,10 @@ const ToughtCreatePart2 = () => {
           style={{borderColor: mainColor}}
           onMouseOver={mouseOverEnterShadow}
         onMouseLeave={mouseOverLeaveShadow}
-          onChange={({target})=> setSubfeelingDifferent(target.value)}
+          onChange={({target})=> {
+            setSubfeelingDifferent(target.value)
+            saveToughtCreationChanges()
+          }}    
           required
           />
         
@@ -186,7 +193,10 @@ const ToughtCreatePart2 = () => {
           onMouseOver={mouseOverEnterShadow}
         onMouseLeave={mouseOverLeaveShadow}
           name="subFeeling"
-          onChange={({target})=> setBodyFeeling(target.value)}
+          onChange={({target})=> {
+            setBodyFeeling(target.value)
+            saveToughtCreationChanges()
+          }}
           required
         >
           <option disabled value="">
@@ -213,7 +223,10 @@ const ToughtCreatePart2 = () => {
         onMouseLeave={mouseOverLeaveShadow}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
-          onChange={({target})=> setBodyFeelingDifferent(target.value)}
+          onChange={({target})=> {
+            setBodyFeelingDifferent(target.value)
+            saveToughtCreationChanges()
+          }}
           required
           />
         
@@ -231,7 +244,10 @@ const ToughtCreatePart2 = () => {
           style={{borderColor: mainColor}}
           onMouseOver={mouseOverEnterShadow}
         onMouseLeave={mouseOverLeaveShadow}
-          onChange={({target})=> setAction(target.value)}
+          onChange={({target})=> {
+            setAction(target.value)
+            saveToughtCreationChanges()
+          }}
           required
         >
           <option disabled value="">
@@ -258,7 +274,10 @@ const ToughtCreatePart2 = () => {
           value={actionDifferent}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
-          onChange={({target})=> setActionDifferent(target.value)}
+          onChange={({target})=> {
+            setActionDifferent(target.value)
+            saveToughtCreationChanges()
+          }}
           required
           />
         
