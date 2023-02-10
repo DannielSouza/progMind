@@ -7,11 +7,19 @@
   position: relative;
 }
 
+.title{
+  font-size: 1.8rem;
+  margin-bottom: 5rem;
+}
+
 .container label{
   width: 350px;
   color: rgb(20, 20, 20);
-  margin-top: 3px;
   margin-bottom: 1rem;
+}
+
+.container label p{
+  margin-bottom: 3px;
 }
 
 .selectInput,
@@ -23,13 +31,8 @@
   border: 2px solid #85C1E9;
   outline: none;
   transition: .5s;
+  color: rgb(90, 90, 90);
   
-}
-
-.selectInput:hover,
-.textInput:hover,
-.selectInputDifferent:hover{
-  box-shadow: 0 0 5px 2px#85C1E9;
 }
 
 .textInput{
@@ -57,8 +60,16 @@
   }
 }
 
+.buttonContainer{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .confirmButton,
-.confirmButtonDisabled{
+.confirmButtonDisabled,
+.backButton{
   background: white;
   width: 100px;
   height: 30px;
@@ -69,13 +80,14 @@
   font-size: .9rem;
   transition: .5s;
   margin-top: 2rem;
-  border: 2px solid #85C1E9;
-  color: #85C1E9;
+  color: white;
+  border: 2px solid;
+  opacity: .75;
 }
 
-.confirmButton:hover{
-  background: #85C1E9;
-  color: white;
+.confirmButton:hover,
+.backButton:hover{
+  opacity: 1;
 }
 
 .confirmButtonDisabled{

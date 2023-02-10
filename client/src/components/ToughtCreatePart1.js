@@ -8,7 +8,7 @@ import verySad from '../assets/emojis/verySad.png'
 import {useSelector} from 'react-redux'
 
 import { useDispatch } from 'react-redux'
-import {changeTought, changeToughtPart} from '../redux/tought/slice'
+import {changeTought, changeToughtPart, changeMainColor} from '../redux/tought/slice'
 
 const ToughtCreatePart1 = () => {
 
@@ -25,6 +25,7 @@ const ToughtCreatePart1 = () => {
 
   function nextCreationPart(){
     dispatch(changeTought({authorEmail: currentUser.userEmail, mainFeeling: selectedTheme.humor}))
+    dispatch(changeMainColor(selectedTheme.color))
     dispatch(changeToughtPart("2"))
   }
 

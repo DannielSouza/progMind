@@ -13,7 +13,8 @@ const initialState = {
     subFeelingDifferent: false,
     bodyFeelingDifferent: false,
     actionDifferent: false
-  }
+  },
+  mainColor: "#2471A3"
 };
 
 const toughtSlice = createSlice({
@@ -37,10 +38,13 @@ const toughtSlice = createSlice({
     },
     updateactionDifferent: (state, action)=>{
       state.differentValues.actionDifferent = action.payload
+    },
+    changeMainColor: (state, action)=>{
+      state.mainColor = action.payload
     }
   },
 });
 
-export const { changeTought, changeToughtPart, resetToughtCreation, updateSubFeelingDifferent, updateBodyFeelingDifferent, updateactionDifferent } = toughtSlice.actions;
+export const { changeTought, changeToughtPart, resetToughtCreation, updateSubFeelingDifferent, updateBodyFeelingDifferent, updateactionDifferent, changeMainColor } = toughtSlice.actions;
 
 export default toughtSlice.reducer;

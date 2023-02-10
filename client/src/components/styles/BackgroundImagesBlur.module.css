@@ -1,0 +1,88 @@
+.container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+.imageBackground1,
+.imageBackground2,
+.imageBackground3,
+.imageBackground4,
+.imageBackground5,
+.imageBackground6,
+.imageBackground7,
+.imageBackground8,
+.imageBackground9{
+  position: absolute;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  opacity: .7;
+}
+
+.imageBackground1{
+  top: 30px;
+  right: 90px;
+  transform: rotate(15deg);
+  width: 90px;
+}
+
+.imageBackground2{
+  top: 50px;
+  left: 100px;
+  transform: rotate(-15deg);
+  width: 75px;
+}
+
+.imageBackground3{
+  top: 280px;
+  right: 30px;
+  width: 95px;
+}
+
+.imageBackground4{
+  top: 330px;
+  left: 160px;
+  transform: rotate(-45deg);
+  width: 120px;
+}
+
+.imageBackground5{
+  top: 600px;
+  left: 120px;
+  transform: rotate(25deg);
+  width: 80px;
+}
+
+.imageBackground6{
+  top: 650px;
+  right: 120px;
+  transform: rotate(25deg);
+  width: 100px;
+}
+
+.imageBackground8{
+  top: 170px;
+  left: 10px;
+  transform: rotate(25deg);
+  width: 80px;
+}
+
+.imageBackground7{
+  top: 150px;
+  right: 300px;
+  transform: rotate(25deg);
+  width: 80px;
+}
+
+.imageBackground9{
+  top: 490px;
+  right: 280px;
+  transform: rotate(-5deg);
+  width: 110px;
+}

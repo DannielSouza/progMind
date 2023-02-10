@@ -5,12 +5,14 @@ import {createThought} from '../helpers/Api'
 import ErrorMessage from './ErrorMessage'
 import { useDispatch } from "react-redux";
 import { changeTought, changeToughtPart, updateSubFeelingDifferent, updateBodyFeelingDifferent, updateactionDifferent} from "../redux/tought/slice"
+import BackgroundImagesBlur from "./BackgroundImagesBlur";
+
 
 const ToughtCreatePart2 = () => {
   const dispatch = useDispatch()
 
   const {currentUser} = useSelector(rootReducer => rootReducer.userReducer)
-  const {currentTought, differentValues} = useSelector(rootReducer => rootReducer.toughtReducer)
+  const {currentTought, differentValues, mainColor} = useSelector(rootReducer => rootReducer.toughtReducer)
 
   const [ subFeeling, setSubfeeling ] = React.useState("")
   const [ subFeelingDifferent, setSubfeelingDifferent ] = React.useState("")
@@ -86,7 +88,7 @@ const ToughtCreatePart2 = () => {
     dispatch(updateSubFeelingDifferent(subFeeling === "outro" ? true : false))
     dispatch(updateBodyFeelingDifferent(bodyFeeling === "outro" ? true : false))
     dispatch(updateactionDifferent(action === "outro" ? true : false))
-    
+
     dispatch(changeTought({
       subFeeling: subFeeling === "outro" ? subFeelingDifferent : subFeeling,
       bodyFeeling: bodyFeeling === "outro" ? bodyFeelingDifferent : bodyFeeling,
@@ -95,18 +97,34 @@ const ToughtCreatePart2 = () => {
     }))
   }
 
+  function mouseOverEnterShadow({target}){
+    target.style.boxShadow = `0px 0px 3px 1px ${mainColor}`;
+  }
+
+  function mouseOverLeaveShadow({target}){
+    target.style.boxShadow = "";
+  }
+
   return (
     <section className={style.container}>
+      <BackgroundImagesBlur />
 
       {error && <ErrorMessage message={error}/>}
 
+      <h3 style={{color: mainColor}} className={style.title}>Descreva mais o que houve</h3>
+
+
       <label>
-      <p>O que aconteceu?</p>
+      <p style={{color: mainColor}}>
+        O que aconteceu?</p>
         <input 
         type="text"
         className={style.textInput}
         placeholder="Digite aqui"
         value={situation}
+        style={{borderColor: mainColor}}
+        onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
         onChange={({target})=> setSituation(target.value)}
         required
         />
@@ -114,11 +132,14 @@ const ToughtCreatePart2 = () => {
 
 
       <label>
-      <p>Qual sentimento você sentiu? *</p>
+      <p style={{color: mainColor}}>Qual sentimento você sentiu? *</p>
         <select
           className={style.selectInput}
           id="type"
           value={subFeeling}
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           name="subFeeling"
           onChange={({target})=> setSubfeeling(target.value)}
           required
@@ -144,6 +165,9 @@ const ToughtCreatePart2 = () => {
           value={subFeelingDifferent}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           onChange={({target})=> setSubfeelingDifferent(target.value)}
           required
           />
@@ -153,11 +177,14 @@ const ToughtCreatePart2 = () => {
 
 
       <label>
-      <p>Como seu corpo reagiu? *</p>
+      <p style={{color: mainColor}}>Como seu corpo reagiu? *</p>
         <select
           className={style.selectInput}
           id="type"
           value={bodyFeeling}
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           name="subFeeling"
           onChange={({target})=> setBodyFeeling(target.value)}
           required
@@ -181,6 +208,9 @@ const ToughtCreatePart2 = () => {
           <input 
           value={bodyFeelingDifferent}
           type="text"
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
           onChange={({target})=> setBodyFeelingDifferent(target.value)}
@@ -192,12 +222,15 @@ const ToughtCreatePart2 = () => {
 
 
       <label>
-      <p>O que você fez em seguida?</p>
+      <p style={{color: mainColor}}>O que você fez em seguida?</p>
         <select
           className={style.selectInput}
           id="type"
           value={action}
           name="subFeeling"
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           onChange={({target})=> setAction(target.value)}
           required
         >
@@ -219,6 +252,9 @@ const ToughtCreatePart2 = () => {
         {action === 'outro' && 
           <input 
           type="text"
+          style={{borderColor: mainColor}}
+          onMouseOver={mouseOverEnterShadow}
+        onMouseLeave={mouseOverLeaveShadow}
           value={actionDifferent}
           className={style.selectInputDifferent}
           placeholder="Digite aqui"
@@ -230,12 +266,15 @@ const ToughtCreatePart2 = () => {
       </label>
 
 
-        <button onClick={backThoughtCreationPart}>Voltar</button>
-        {loading?
-          <button className={style.confirmButtonDisabled}>Enviar</button>
-        :
-        <button className={style.confirmButton} onClick={confirmAndTrySubmit}>Enviar</button>
-      }
+        <div className={style.buttonContainer}>
+          <button style={{borderColor: mainColor, color: mainColor}} className={style.backButton} onClick={backThoughtCreationPart}>Voltar</button>
+
+          {loading?
+            <button style={{borderColor: mainColor, background: mainColor}} className={style.confirmButtonDisabled}>Enviar</button>
+            :
+            <button style={{borderColor: mainColor, background: mainColor}} className={style.confirmButton} onClick={confirmAndTrySubmit}>Enviar</button>
+          }
+        </div>
     </section>
   );
 };
