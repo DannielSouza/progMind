@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import History from "./pages/History";
 
 function App() {
 
@@ -25,8 +26,8 @@ function App() {
       {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
         <Routes>
           <Route path="/auth" element={<Login setShowSidebar={setShowSidebar} />} />
-
           <Route path="/" element={<Home setShowSidebar={setShowSidebar} />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </div>
 

@@ -147,15 +147,15 @@ const ToughtCreatePart2 = () => {
           <option disabled value="">
             Selecione
           </option>
-          <option value="ansiedade">Ansiedade</option>
-          <option value="alegria">Alegria</option>
-          <option value="surpresa">Surpresa</option>
-          <option value="amor">Amor</option>
-          <option value="otimismo">Otimismo</option>
-          <option value="calma">Calma</option>
-          <option value="orgulho">Orgulho</option>
-          <option value="excitação">Excitação</option>
-          <option value="constrangimento">Constrangimento</option>
+          <option value="Ansiedade">Ansiedade</option>
+          <option value="Alegria">Alegria</option>
+          <option value="Surpresa">Surpresa</option>
+          <option value="Amor">Amor</option>
+          <option value="Otimismo">Otimismo</option>
+          <option value="Calma">Calma</option>
+          <option value="Orgulho">Orgulho</option>
+          <option value="Excitação">Excitação</option>
+          <option value="Constrangimento">Constrangimento</option>
           <option value="outro">Outro</option>
         </select>
 
@@ -192,15 +192,15 @@ const ToughtCreatePart2 = () => {
           <option disabled value="">
             Selecione
           </option>
-          <option value="falta de ar">Falta de ar</option>
-          <option value="tontura">Tontura</option>
-          <option value="tremores">Tremores</option>
-          <option value="agitação">Agitação</option>
-          <option value="palpitações">Palpitações</option>
-          <option value="dor no peito">Dor no peito</option>
-          <option value="cansaço">Cansaço</option>
-          <option value="tensão muscular">Tensão muscular</option>
-          <option value="frio na barriga">Frio na barriga</option>
+          <option value="Falta de ar">Falta de ar</option>
+          <option value="Tontura">Tontura</option>
+          <option value="Tremores">Tremores</option>
+          <option value="Agitação">Agitação</option>
+          <option value="Palpitações">Palpitações</option>
+          <option value="Dor no peito">Dor no peito</option>
+          <option value="Cansaço">Cansaço</option>
+          <option value="Tensão muscular">Tensão muscular</option>
+          <option value="Frio na barriga">Frio na barriga</option>
           <option value="outro">Outro</option>
         </select>
 
@@ -237,15 +237,15 @@ const ToughtCreatePart2 = () => {
           <option disabled value="">
             Selecione
           </option>
-          <option value="pratiquei atividade fisica">Pratiquei atividade fisica</option>
-          <option value="pratiquei yoga/relaxamento">Pratiquei yoga/relaxamento</option>
-          <option value="consumi alcool">Consumi álcool</option>
-          <option value="fiz compras">Fiz compras</option>
-          <option value="fumei">Fumei</option>
-          <option value="me isolei">Me isolei</option>
-          <option value="fui dormir">Fui dormir</option>
-          <option value="comi compulsivamente">Comi compulsivamente</option>
-          <option value="pesquisei ou planejei suicidio">Pesquisei ou planejei suicidio</option>
+          <option value="Pratiquei atividade fisica">Pratiquei atividade fisica</option>
+          <option value="Pratiquei yoga/relaxamento">Pratiquei yoga/relaxamento</option>
+          <option value="Consumi alcool">Consumi álcool</option>
+          <option value="Fiz compras">Fiz compras</option>
+          <option value="Fumei">Fumei</option>
+          <option value="Me isolei">Me isolei</option>
+          <option value="Fui dormir">Fui dormir</option>
+          <option value="Comi compulsivamente">Comi compulsivamente</option>
+          <option value="Pesquisei ou planejei suicidio">Pesquisei ou planejei suicidio</option>
           <option value="outro">Outro</option>
         </select>
 

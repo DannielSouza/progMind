@@ -47,4 +47,14 @@ async function createThought(newTought, token){
 }
 
 
-export { verifyUser, loginUser, registerUser, createThought };
+/* CREATE TOUGHT USER */
+async function getUserToughts(userEmail){
+  const response = await axios.post("http://localhost:4000/thought/getAll", {userEmail: userEmail});
+  const data = await response.data;
+
+  return data;
+}
+
+
+
+export { verifyUser, loginUser, registerUser, createThought, getUserToughts };

@@ -1,0 +1,49 @@
+.container{
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: .5rem;
+  margin-right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emojiResume{
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.resumeInfo{
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.resumeInfo span{
+  text-transform: capitalize;
+}
+
+.subInfos h3{
+  font-weight: 600;
+  font-size: .85rem;
+}
+
+.subInfos span{
+  font-size: .85rem;
+  font-weight: normal;
+  color: rgb(127, 127, 127);}
+
+.date{
+  color: rgb(170, 170, 170);
+  font-size: .7rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  margin-bottom: .8rem;
+  font-weight: 400;
+}
+
+.date img{
+  max-width: 12px;
+}

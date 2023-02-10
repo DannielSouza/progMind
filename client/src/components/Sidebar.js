@@ -26,7 +26,7 @@ const Sidebar = ({setShowSidebar}) => {
       <h2 className={style.title}>Prog<span>Mind</span></h2>
 
       <div className={style.createContainer}>
-        <button className={style.createIcon}><img src={plusIcon} alt="adicionar pensamento" /> <Link to={"/"}>Novo pensamento</Link></button>
+        <Link to={"/"}><button className={style.createIcon}><img src={plusIcon} alt="adicionar pensamento" /> Novo pensamento</button></Link>
       </div>
 
       <div className={style.menuContainer}>
@@ -34,8 +34,8 @@ const Sidebar = ({setShowSidebar}) => {
           Acompanhamento
         </span>
         <ul className={style.listContainer}>
-          <div> <img src={graphIcon} alt="vizualizar estatísticas" /> <li>Estatísticas </li></div>
-          <div> <img src={historyIcon} alt="vizualizar historico" /> <li>Histórico</li></div>
+          <div><img src={graphIcon} alt="vizualizar estatísticas" /> <li>Estatísticas </li></div>
+          <Link to={'/history'}><div> <img src={historyIcon} alt="vizualizar historico" /> <li>Histórico</li></div></Link>
         </ul>
 
         <span>

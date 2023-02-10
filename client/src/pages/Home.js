@@ -2,8 +2,7 @@ import React from 'react'
 import style from './styles/Home.module.css'
 import checkAuth from '../helpers/autoCheckAuth';
 import { useNavigate } from "react-router-dom";
-import {useSelector, useDispatch} from 'react-redux'
-import rootReducer from '../redux/rootReducer';
+import {useDispatch} from 'react-redux'
 import ToughtCreate from './ToughtCreate';
 
 const Home = () => {
@@ -17,11 +16,8 @@ const Home = () => {
 
 
   return (
-    <div className={style.container}>
-      
+    <div className={style.container}>  
       <ToughtCreate />
-
-
     </div>
   )
 }
