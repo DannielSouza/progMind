@@ -7,7 +7,7 @@ import plusIcon from '../assets/plus.png'
 import exitIcon from '../assets/exit.png'
 import { logout } from '../redux/user/slice'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Sidebar = ({setShowSidebar}) => {
   
@@ -26,7 +26,7 @@ const Sidebar = ({setShowSidebar}) => {
       <h2 className={style.title}>Prog<span>Mind</span></h2>
 
       <div className={style.createContainer}>
-        <button className={style.createIcon}><img src={plusIcon} alt="vizualizar historico" /> Novo pensamento</button>
+        <button className={style.createIcon}><img src={plusIcon} alt="adicionar pensamento" /> <Link to={"/"}>Novo pensamento</Link></button>
       </div>
 
       <div className={style.menuContainer}>

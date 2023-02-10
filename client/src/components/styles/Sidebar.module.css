@@ -45,6 +45,10 @@
   transition: .5s;
 }
 
+.createIcon a{
+  color: white;
+}
+
 .createIcon:hover{
   transform: scale(1.05);
 }
