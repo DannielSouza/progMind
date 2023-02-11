@@ -50,7 +50,7 @@ const Statistics = () => {
         <div className={style.subGraphsContainer}>
           <div className={style.subGraphsContent}>
             <h1>Resumo quantitativo:</h1>
-            <p>Nesses gráficos você tem um resumo dos pensamentos separados em categorias em seus respectivos gráficos gráficos diferentes.</p>
+            <p>Nesses gráficos você tem um resumo dos pensamentos separados em categorias em seus respectivos gráficos.</p>
           </div>
           <div className={style.subGraphs}>
             <MainQuantityGraph data={data} />
