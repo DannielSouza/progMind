@@ -1,0 +1,74 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lineGraphContent h1,
+.subGraphsContent h1{
+  margin-bottom: 10px;
+  padding-top: 1.5rem;
+  font-size: 1.2rem;
+  position: relative;
+  padding-left: 15px;
+  color: #85C1E9;
+  border-bottom: 1px solid #85C1E9;
+  width: 500px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.lineGraphContent p,
+.subGraphsContent p{
+  font-size: .9rem;
+  max-width: 900px;
+}
+
+.lineGraphContent h1::before,
+.subGraphsContent h1::before{
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #85C1E9;
+  position: absolute;
+  left: -2px;
+  top: 65%;
+  border-radius: 50%;
+  animation: animaShadow 5s ease-in-out infinite;
+}
+
+@keyframes animaShadow {
+  0%{
+    box-shadow: none;
+  }
+  50%{
+    box-shadow: 0 0 4px 2px #85C1E9;
+  }
+  100%{
+    box-shadow: none;
+  }
+}
+
+.lineGraph{
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subGraphsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subGraphs{
+  display: flex;
+  gap: 3rem;
+}
+
+.lineGraphContent,
+.subGraphsContent{
+  padding-bottom: 2rem;
+}

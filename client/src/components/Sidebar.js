@@ -34,7 +34,7 @@ const Sidebar = ({setShowSidebar}) => {
           Acompanhamento
         </span>
         <ul className={style.listContainer}>
-          <div><img src={graphIcon} alt="vizualizar estatísticas" /> <li>Estatísticas </li></div>
+          <Link to={'/statistics'}><div><img src={graphIcon} alt="vizualizar estatísticas" /> <li>Estatísticas </li></div></Link>
           <Link to={'/history'}><div> <img src={historyIcon} alt="vizualizar historico" /> <li>Histórico</li></div></Link>
         </ul>
 

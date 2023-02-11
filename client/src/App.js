@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import History from "./pages/History";
+import Statistics from "./pages/Statistics";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/auth" element={<Login setShowSidebar={setShowSidebar} />} />
           <Route path="/" element={<Home setShowSidebar={setShowSidebar} />} />
           <Route path="/history" element={<History />} />
+          <Route path="/statistics" element={ <Statistics />} />
         </Routes>
       </div>
 

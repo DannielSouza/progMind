@@ -1,0 +1,13 @@
+.selectContainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.selectItem{
+  margin-top: -1rem;
+  margin-bottom: .5rem;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
