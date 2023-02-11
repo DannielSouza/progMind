@@ -4,7 +4,7 @@ main()
 
 async function main(){
   try {
-    await mongoose.connect("mongodb+srv://admin:password321@thoughtsdb.lweyn50.mongodb.net/?retryWrites=true&w=majority")
+    await mongoose.connect("YOUR MONGODB CONNECTION URL")
     console.log("Conectado ao banco de dados.");
   } catch (error) {
     console.log(`Erro ao conectar no banco de dados: ${error}.`)
