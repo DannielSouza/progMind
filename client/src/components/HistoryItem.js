@@ -32,9 +32,9 @@ const HistoryItem = ({itemData}) => {
         </div>
 
         <div className={style.subInfos}>
-          {situation && <h3 style={{color: theme.color}}>O que houve: <span>{situation}</span></h3>}
-          {action && <h3 style={{color: theme.color}}>O que fez em seguida: <span>{action}</span></h3>}
-          {bodyFeeling && <h3 style={{color: theme.color}}>Como seu corpo reagiu: <span>{bodyFeeling}</span></h3>}
+          {situation && <h3 >O que houve: <span>{situation}</span></h3>}
+          {action && <h3 >O que fez em seguida: <span>{action}</span></h3>}
+          {bodyFeeling && <h3 >Como seu corpo reagiu: <span>{bodyFeeling}</span></h3>}
         </div>
       </div>
 
