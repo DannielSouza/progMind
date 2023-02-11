@@ -24,16 +24,25 @@ const PieGraph = ({data}) => {
     let outroQuantity = 0;
 
     data.forEach((dataItem) => {
-      if (dataItem.bodyFeeling === "Falta de ar") faltaDeArQuantity++;
-      if (dataItem.bodyFeeling === "Tontura") tonturaQuantity++;
-      if (dataItem.bodyFeeling === "Tremores") tremoresQuantity++;
-      if (dataItem.bodyFeeling === "Agitação") agitaçãoQuantity++;
-      if (dataItem.bodyFeeling === "Palpitações") palpitaçõesQuantity++;
-      if (dataItem.bodyFeeling === "Dor no peito") dorNoPeitoQuantity++;
-      if (dataItem.bodyFeeling === "Cansaço") cansaçoQuantity++;
-      if (dataItem.bodyFeeling === "Tensão muscular") tensãoMuscularQuantity++;
-      if (dataItem.bodyFeeling === "frio na barriga") frioNaBarrigaQuantity++;
-      if (dataItem.bodyFeeling === "outro") outroQuantity++;
+      if (dataItem.bodyFeeling === "Falta de ar"){ 
+        faltaDeArQuantity++}
+      else if (dataItem.bodyFeeling === "Tontura"){ 
+        tonturaQuantity++}
+      else if (dataItem.bodyFeeling === "Tremores"){ 
+        tremoresQuantity++}
+      else if (dataItem.bodyFeeling === "Agitação"){ 
+        agitaçãoQuantity++}
+      else if (dataItem.bodyFeeling === "Palpitações"){ 
+        palpitaçõesQuantity++}
+      else if (dataItem.bodyFeeling === "Dor no peito"){ 
+        dorNoPeitoQuantity++}
+      else if (dataItem.bodyFeeling === "Cansaço"){ 
+        cansaçoQuantity++}
+      else if (dataItem.bodyFeeling === "Tensão muscular"){ 
+        tensãoMuscularQuantity++}
+      else if (dataItem.bodyFeeling === "frio na barriga"){ 
+        frioNaBarrigaQuantity++}
+      else outroQuantity++
     });
 
     setCombineQuantity([

@@ -24,15 +24,23 @@ const RadarGraph = ({data}) => {
     let outroQuantity = 0;
 
     data.forEach((dataItem) => {
-      if (dataItem.subFeeling ==="Alegria") alegriaQuantityQuantity++;
-      if (dataItem.subFeeling === "Surpresa") surpresaQuantity++;
-      if (dataItem.subFeeling === "Amor") amorQuantity++;
-      if (dataItem.subFeeling === "Otimismo") otimismoQuantity++;
-      if (dataItem.subFeeling === "Calma") calmaQuantity++;
-      if (dataItem.subFeeling === "Excitação") excitaçãoQuantity++;
-      if (dataItem.subFeeling === "Orgulho") orgulhoQuantity++;
-      if (dataItem.subFeeling === "Constrangimento") constrangimentoQuantity++;
-      if (dataItem.subFeeling === "outro") outroQuantity++;
+      if (dataItem.subFeeling ==="Alegria"){ 
+        alegriaQuantityQuantity++}
+      else if (dataItem.subFeeling === "Surpresa"){ 
+        surpresaQuantity++}
+      else if (dataItem.subFeeling === "Amor"){ 
+        amorQuantity++}
+      else if (dataItem.subFeeling === "Otimismo"){ 
+        otimismoQuantity++}
+      else if (dataItem.subFeeling === "Calma"){ 
+        calmaQuantity++}
+      else if (dataItem.subFeeling === "Excitação"){ 
+        excitaçãoQuantity++}
+      else if (dataItem.subFeeling === "Orgulho"){ 
+        orgulhoQuantity++}
+      else if (dataItem.subFeeling === "Constrangimento"){ 
+        constrangimentoQuantity++}
+      else outroQuantity++;
     });
 
     setCombineQuantity([
