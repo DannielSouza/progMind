@@ -7,9 +7,10 @@ import {
   Cell
 } from "recharts";
 
-const PieGraph = ({data}) => {
+const PieGraph = ({data, screenSettings}) => {
 
   const [combineQuantity, setCombineQuantity] = React.useState();
+  const [graphSize, setGraphSize] = React.useState({width:270, height: 200, layout:"vertical", align:"right"})
 
   React.useEffect(()=>{
     let faltaDeArQuantity = 0;
@@ -23,7 +24,7 @@ const PieGraph = ({data}) => {
     let frioNaBarrigaQuantity = 0;
     let outroQuantity = 0;
 
-    data.forEach((dataItem) => {
+    data.forEach((dataItem, screenSettings) => {
       if (dataItem.bodyFeeling === "Falta de ar"){ 
         faltaDeArQuantity++}
       else if (dataItem.bodyFeeling === "Tontura"){ 
@@ -63,11 +64,17 @@ const PieGraph = ({data}) => {
     "#7D3C98", "#884EA0", "#2471A3", "#2E86C1", "#D4AC0D", "#E74C3C", "#F1C40F", "#D35400", "#7B241C", "#808B96"
   ]
 
+  React.useEffect(()=>{
+    if(screenSettings <= 1100){
+      setGraphSize({width: 250, height:300, layout:"horizontal", align: undefined})
+    }
+  },[screenSettings])
+
 
   if(combineQuantity) return (
     <div>
-      <PieChart width={270} height={200}>
-      <Legend iconSize={10} layout="vertical" align='right'/><Tooltip />
+      <PieChart width={graphSize.width} height={graphSize.height}>
+      <Legend iconSize={10} layout={graphSize.layout} align={graphSize.align}/><Tooltip />
         <Pie data={combineQuantity} dataKey="quantity" nameKey="name" outerRadius={50} fill="#8884d8">
 
         {combineQuantity.map((entry, index) => (

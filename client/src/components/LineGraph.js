@@ -10,13 +10,14 @@ import {
 } from "recharts";
 import style from './styles/LineGraph.module.css'
 
-const LineGraph = ({data}) => {
+const LineGraph = ({data, screenSettings}) => {
 
   const [dataArray, setDataArray] = React.useState([])
 
   const [startCount, setStartCount] = React.useState(false)
   const [currentDates, setCurrentDates] = React.useState()
   const [selectPrompt, setSelectPrompt] = React.useState(30)
+  const [graphSize, setGraphSize] = React.useState({width:800, height: 180})
   
 
   React.useEffect(()=>{
@@ -47,7 +48,6 @@ const LineGraph = ({data}) => {
     setStartCount(true)
   },[selectPrompt])
 
-
   React.useEffect(()=>{
     if(dataArray){
     data.forEach((item)=>{
@@ -71,6 +71,12 @@ const LineGraph = ({data}) => {
     setCurrentDates(dataArray.slice(0, selectPrompt))
   },[dataArray, selectPrompt])
   
+
+  React.useEffect(()=>{
+    if(screenSettings <= 1150){
+      setGraphSize({width: 480, height:150})
+    }
+  },[screenSettings])
   
 
   if(currentDates && currentDates.length > 0) return (
@@ -88,7 +94,7 @@ const LineGraph = ({data}) => {
         <option value="30">30 dias</option>
       </select> 
 
-      <LineChart width={800} height={180} data={currentDates.reverse()}>
+      <LineChart width={graphSize.width} height={graphSize.height} data={currentDates.reverse()}>
         <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />

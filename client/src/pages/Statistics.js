@@ -16,6 +16,7 @@ const Statistics = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const [data, setData] = React.useState();
+  const [screenSettings, setScreeSetings] = React.useState()
 
 
   React.useEffect(() => {
@@ -32,6 +33,10 @@ const Statistics = () => {
     getHistoryData();
   }, [currentUser]);
 
+  React.useEffect(()=>{
+    setScreeSetings(window.screen.width)
+  },[])
+
 
   if (data)
     return (
@@ -44,7 +49,7 @@ const Statistics = () => {
         </div>
             <p>Nesse gráfico você consegue acompanhar quantos pensamentos você adicionou em determado período de tempo, além de conseguir aumentar e diminuir o raio de busca.</p>
           </div>
-          <LineGraph data={data} />
+          <LineGraph screenSettings={screenSettings} data={data} />
         </div>
 
         <div className={style.subGraphsContainer}>
@@ -53,9 +58,9 @@ const Statistics = () => {
             <p>Nesses gráficos você tem um resumo dos pensamentos separados em categorias em seus respectivos gráficos.</p>
           </div>
           <div className={style.subGraphs}>
-            <MainQuantityGraph data={data} />
-            <RadarGraph data={data} />
-            <PieGraph data={data} />
+            <MainQuantityGraph screenSettings={screenSettings} data={data} />
+            <RadarGraph screenSettings={screenSettings} data={data} />
+            <PieGraph screenSettings={screenSettings} data={data} />
           </div>
         </div>
 

@@ -8,9 +8,15 @@ import {
   Bar
 } from "recharts";
 
-const MainQuantityGraph = ({data}) => {
+import style from './styles/MainQuantityGraph.module.css'
+
+
+
+const MainQuantityGraph = ({data, screenSettings}) => {
 
   const [combineQuantity, setCombineQuantity] = React.useState();
+  const [graphSize, setGraphSize] = React.useState({width:400, height: 200})
+
 
 
   React.useEffect(()=>{
@@ -37,10 +43,16 @@ const MainQuantityGraph = ({data}) => {
     ]);
   },[])
 
+  React.useEffect(()=>{
+    if(screenSettings <= 1100){
+      setGraphSize({width: 395, height:160})
+    }
+  },[screenSettings])
+
   return (
 
-  <div>
-    <BarChart margin={1} width={400} height={200} data={combineQuantity}>
+  <div className={style.container}>
+    <BarChart margin={1} width={graphSize.width} height={graphSize.height} data={combineQuantity}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" type="category" />
       <YAxis  type="number" allowDecimals={false}/>

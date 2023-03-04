@@ -7,10 +7,11 @@ import {
   Tooltip,
 } from "recharts";
 
-const RadarGraph = ({data}) => {
-
+const RadarGraph = ({data, screenSettings}) => {
 
   const [combineQuantity, setCombineQuantity] = React.useState();
+  const [graphSize, setGraphSize] = React.useState({width:370, height: 250})
+
 
   React.useEffect(()=>{
     let alegriaQuantityQuantity = 0;
@@ -85,10 +86,16 @@ const RadarGraph = ({data}) => {
     ]);
   },[])
 
+  React.useEffect(()=>{
+    if(screenSettings <= 1100){
+      setGraphSize({width: 310, height:250})
+    }
+  },[screenSettings])
+
 
   return (
     <div>
-      <RadarChart outerRadius={90} width={370} height={250} data={combineQuantity}>
+      <RadarChart outerRadius={90} width={graphSize.width} height={graphSize.height} data={combineQuantity}>
         <PolarGrid />
         <PolarAngleAxis dataKey="name" />
         <Tooltip />

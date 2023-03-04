@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
   animation: animaAppear .5s ease-in-out forwards;
 }
 
@@ -81,4 +81,15 @@
 .lineGraphContent,
 .subGraphsContent{
   padding-bottom: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .subGraphs{
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .container{
+    padding-left: 2rem;
+  }
 }
