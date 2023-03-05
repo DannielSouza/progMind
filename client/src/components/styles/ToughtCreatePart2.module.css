@@ -95,3 +95,16 @@
   background-color: #adcce0;
   color: white;
 }
+
+
+@media (max-width: 380px) {
+  .container{
+    padding: 10px;
+    text-align: center;
+  }
+  .selectInput,
+  .textInput,
+  .selectInputDifferent{
+    width: 320px;
+  }
+}

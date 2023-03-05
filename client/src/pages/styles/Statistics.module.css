@@ -105,3 +105,25 @@
     max-width: 400px;
   }
 }
+
+@media (max-width: 500px) {
+  .container{
+    max-width: 500px;
+    padding-left: 2rem;
+  }
+  .subGraphsContent,
+  .lineGraphContent{
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container{
+    max-width: 500px;
+    padding-left: 2rem;
+  }
+  .subGraphsContent,
+  .lineGraphContent{
+    max-width: 300px;
+  }
+}

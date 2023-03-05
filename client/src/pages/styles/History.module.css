@@ -17,6 +17,18 @@
   border-bottom: 1px solid #85C1E9;
   width: 70px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  animation: animaSlide .3s ease-in-out forwards;
+}
+
+@keyframes animaSlide {
+  from{
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to{
+    transform: initial;
+    opacity: 1;
+  }
 }
 
 .container h1::before{

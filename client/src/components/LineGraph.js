@@ -79,6 +79,9 @@ const LineGraph = ({data, screenSettings}) => {
     if(screenSettings <= 500){
       setGraphSize({width: 380, height:150})
     }
+    if(screenSettings <= 380){
+      setGraphSize({width: 300, height:140})
+    }
   },[screenSettings])
   
 
