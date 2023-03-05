@@ -21,7 +21,12 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
-.mainContainer{
+.mainContainerDesktop{
   display: grid;
   grid-template-columns: 250px 1fr;
+}
+
+.mainContainerMobile{
+  display: flex;
+  flex-direction: column-reverse;
 }

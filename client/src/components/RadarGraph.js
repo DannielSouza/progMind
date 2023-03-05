@@ -6,6 +6,7 @@ import {
   Radar,
   Tooltip,
 } from "recharts";
+import style from './styles/RadarGraph.module.css'
 
 const RadarGraph = ({data, screenSettings}) => {
 
@@ -94,7 +95,7 @@ const RadarGraph = ({data, screenSettings}) => {
 
 
   return (
-    <div>
+    <div className={screenSettings <= 500 && style.container}>
       <RadarChart outerRadius={90} width={graphSize.width} height={graphSize.height} data={combineQuantity}>
         <PolarGrid />
         <PolarAngleAxis dataKey="name" />

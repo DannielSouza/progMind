@@ -47,6 +47,9 @@ const MainQuantityGraph = ({data, screenSettings}) => {
     if(screenSettings <= 1100){
       setGraphSize({width: 395, height:160})
     }
+    if(screenSettings <= 500){
+      setGraphSize({width: 360, height:150})
+    }
   },[screenSettings])
 
   return (

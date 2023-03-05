@@ -5,6 +5,7 @@
   justify-content: center;
   overflow-x: hidden;
   animation: animaAppear .5s ease-in-out forwards;
+  padding-bottom: 4rem;
 }
 
 @keyframes animaAppear {
@@ -91,5 +92,16 @@
   }
   .container{
     padding-left: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container{
+    max-width: 500px;
+    padding-left: 2rem;
+  }
+  .subGraphsContent,
+  .lineGraphContent{
+    max-width: 400px;
   }
 }

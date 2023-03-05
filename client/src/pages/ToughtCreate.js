@@ -1,7 +1,6 @@
 import React from 'react'
 import ToughtCreatePart1 from '../components/ToughtCreatePart1'
 import ToughtCreatePart2 from '../components/ToughtCreatePart2'
-import style from './styles/ToughtCreate.module.css'
 import {useSelector} from 'react-redux'
 import ToughtCreateFinal from '../components/ToughtCreateFinal'
 

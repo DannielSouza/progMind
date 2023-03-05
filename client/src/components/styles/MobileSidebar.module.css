@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  justify-content: space-around;
+  width: 100vw;
+  box-shadow: 2px 0 2px #A6ACAF;
+  z-index: 99;
+  background: white;
+}
+
+.menuIcon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: .7rem 2rem;
+}
+
+.menuIcon img{
+  max-width: 30px;
+}

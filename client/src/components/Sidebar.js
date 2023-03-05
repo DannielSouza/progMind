@@ -1,53 +1,35 @@
 import React from 'react'
-import style from './styles/Sidebar.module.css'
+import DesktopSidebar from './DesktopSidebar'
 
-import historyIcon from '../assets/history.png'
-import graphIcon from '../assets/graph.png'
-import plusIcon from '../assets/plus.png'
-import exitIcon from '../assets/exit.png'
-import { logout } from '../redux/user/slice'
 import { useDispatch } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { changeBarType } from '../redux/sidebar/slice'
+import MobileSidebar from './MobileSidebar'
 
 const Sidebar = ({setShowSidebar}) => {
   
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [sidebarView, setSidebarView] = React.useState()
 
-  function logoutUser(){
-    localStorage.removeItem("progMindAuth")
-    dispatch(logout())
-    navigate("/auth")
-    setShowSidebar(false)
-  }
+  React.useEffect(()=>{
 
-  return (
-    <header className={style.container}>
-      <h2 className={style.title}>Prog<span>Mind</span></h2>
+    if(window.innerWidth > 750){
+      dispatch(changeBarType("desktop"))
+      setSidebarView("desktop")
+    }
+    else{
+      dispatch(changeBarType("mobile"))
+      setSidebarView("mobile")
+    }
+  },[])
 
-      <div className={style.createContainer}>
-        <Link to={"/"}><button className={style.createIcon}><img src={plusIcon} alt="adicionar pensamento" /> Novo pensamento</button></Link>
-      </div>
-
-      <div className={style.menuContainer}>
-        <span>
-          Acompanhamento
-        </span>
-        <ul className={style.listContainer}>
-          <Link to={'/history'}><div> <img src={historyIcon} alt="vizualizar historico" /> <li>Histórico</li></div></Link>
-          <Link to={'/statistics'}><div><img src={graphIcon} alt="vizualizar estatísticas" /> <li>Estatísticas </li></div></Link>
-        </ul>
-
-        <span>
-          Conta
-        </span>
-        <ul className={style.listContainer}>
-          <div onClick={logoutUser}> <img src={exitIcon} alt="Sair da conta" /> <li>Sair</li></div>
-        </ul>
-      </div>
-
-    </header>
+  if(sidebarView === "desktop") return (
+    <DesktopSidebar setShowSidebar={setShowSidebar} />
   )
+  else{
+    return(
+      <MobileSidebar setShowSidebar={setShowSidebar} />
+    )
+  }
 }
 
 export default Sidebar
