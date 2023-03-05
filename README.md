@@ -50,6 +50,12 @@ Sempre vi muitos falarem mal do Java, por esse motivo há algum tempo comecei a 
 <br/><br/><br/>
 
 
+* Responsivo<br/>
+-O site é totalmente responsivo para disposivos como tablets e smartphones.<br/>
+<img src="https://user-images.githubusercontent.com/104663666/222977989-a34b83de-9f8e-4896-8529-0b3427275b51.gif"/>
+<br/><br/><br/>
+
+
 
 
 
